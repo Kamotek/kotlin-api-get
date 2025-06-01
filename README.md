@@ -50,3 +50,10 @@ Then run this command
 - test packages
   - io - handles very simple tests for PostSaver and PostSerializer classes
   - network - handles very simple tests for PostApiClient class
+
+## Additional things:
+
+- Dockerfile:
+  - Simple script that builds and runs light and simple container
+- Github Actions Workflow:
+  - Simple workflow yaml script that lints and runs tests on the project
