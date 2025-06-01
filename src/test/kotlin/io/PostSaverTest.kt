@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.nio.file.Files
 import java.nio.file.Path
+import kotlin.test.assertContains
 
 class PostSaverTest {
 
@@ -29,10 +30,10 @@ class PostSaverTest {
 
    val content = Files.readString(filePath)
 
-   assertTrue(content.contains("\"userId\": ${post.userId}"), "There's no userId in JSON")
-   assertTrue(content.contains("\"id\": ${post.id}"), "There's no id in JSON")
-   assertTrue(content.contains("\"title\": \"${post.title}\""), "There's no title in JSON")
-   assertTrue(content.contains("\"body\": \"${post.body}\""), "There's no body in JSON")
+   assertContains(content, "\"userId\": ${post.userId}", message = "There's no userId in JSON")
+   assertContains(content, "\"id\": ${post.id}", message = "There's no id in JSON")
+   assertContains(content, "\"title\": \"${post.title}\"", message = "There's no title in JSON")
+   assertContains(content, "\"body\": \"${post.body}\"", message = "There's no body in JSON")
   }
  }
 }

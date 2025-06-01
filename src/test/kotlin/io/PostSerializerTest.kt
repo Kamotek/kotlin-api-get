@@ -2,9 +2,11 @@ package io
 
 import com.io.PostSerializer
 import com.model.Post
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import kotlinx.serialization.json.*
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
+
 
 class PostSerializerTest {
 
@@ -21,14 +23,25 @@ class PostSerializerTest {
 
   val jsonElement = Json.decodeFromString<JsonObject>(jsonString)
 
-  assertTrue(jsonElement.containsKey("userId"), "There's no userId in JSON")
-  assertTrue(jsonElement.containsKey("id"), "Ther's no id in JSON")
-  assertTrue(jsonElement.containsKey("title"), "There's no title in JSON")
-  assertTrue(jsonElement.containsKey("body"), "There's no body in JSON")
 
-  assertTrue(jsonElement["userId"]!!.jsonPrimitive.int == 69, "Invalid UserId value")
-  assertTrue(jsonElement["id"]!!.jsonPrimitive.int == 3, "Invalid id value")
-  assertTrue(jsonElement["title"]!!.jsonPrimitive.content == "Title test 123", "Invalid title value")
-  assertTrue(jsonElement["body"]!!.jsonPrimitive.content == "Body test 123", "Invalid Body test value")
+  assertContains(jsonElement, "userId",message = "There's no userId in JSON")
+  assertContains(jsonElement, "id", message = "Ther's no id in JSON")
+  assertContains(jsonElement,"title", message = "There's no title in JSON")
+  assertContains(jsonElement,"body", message = "There's no body in JSON")
+
+
+  assertEquals(69, jsonElement["userId"]!!.jsonPrimitive.int, "Invalid UserId value")
+  assertEquals(3, jsonElement["id"]!!.jsonPrimitive.int, "Invalid id value")
+  assertEquals(
+   "Title test 123",
+   jsonElement["title"]!!.jsonPrimitive.content,
+   "Invalid title value"
+  )
+  assertEquals(
+   "Body test 123",
+   jsonElement["body"]!!.jsonPrimitive.content,
+   "Invalid Body test value"
+  )
+
  }
 }

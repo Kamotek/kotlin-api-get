@@ -15,22 +15,22 @@ object PostApiClient {
     private val logger = LoggerFactory.getLogger("PostApiClient")
 
     suspend fun getPosts(postApiUrl: String): List<Post> {
-        val client = HttpClient(CIO) {
+        val httpClient = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
 
             }
         }
 
-        val response: HttpResponse = client.get(postApiUrl)
-        client.close()
+        val httpResponse: HttpResponse = httpClient.get(postApiUrl)
+        httpClient.close()
 
-        if(response.status != HttpStatusCode.OK){
-            logger.error("Failed to fetch posts: HTTP ${response.status}")
+        if(httpResponse.status != HttpStatusCode.OK){
+            logger.error("Failed to fetch posts: HTTP ${httpResponse.status}")
             return emptyList()
         }
 
-        val posts: List<Post> = response.body()
+        val posts: List<Post> = httpResponse.body()
 
         return posts
     }
