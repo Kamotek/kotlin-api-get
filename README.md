@@ -43,8 +43,9 @@ Then run this command
 ## Project structure:
 - com.config - holds static configuration
 - com.model - model layer, contains serializable data class Post
-- com.network - PostApiClient handles communication with remote API, also deserializing initial response.body
-- com.io - serializes Post data classes and saves them as JSON locally
+- com.network - PostApiClient handles communication with remote API
+- com.filesio - serializes Post data classes and saves them as JSON locally
+- com.service - business logic, fetches data and deserializes it
 - com (root) - entry point, handles very simple input handling, and ties everything together
 - resources/logback.xml - controls logging format and logback levels
 - test packages

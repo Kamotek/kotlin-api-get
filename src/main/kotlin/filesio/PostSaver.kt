@@ -6,8 +6,17 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 
+
+/**
+ * object that uses PostSerialization singleton to store our posts locally in a specific folder
+ */
 object PostSaver {
     private val logger = LoggerFactory.getLogger("PostSaver")
+
+    /**
+     * @param destinationFolderPath it's a path where our posts will be stored
+     * @param posts - list of posts, that will be serialized and stored in a specific folder
+     */
     fun savePosts(destinationFolderPath: String, posts: List<Post>) {
         val destinationPath: Path = Paths.get(destinationFolderPath)
 
