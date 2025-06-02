@@ -1,5 +1,9 @@
 package com.config
 
+/**
+ * Config object that can store various values
+ */
 object Config {
-    const val POST_API: String = "https://jsonplaceholder.typicode.com/posts"
+    val POST_API = System.getenv("POST_API_URL")
+        ?: "https://jsonplaceholder.typicode.com/posts"
 }
