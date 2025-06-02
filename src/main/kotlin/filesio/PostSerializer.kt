@@ -1,4 +1,4 @@
-package com.io
+package com.filesio
 
 import com.model.Post
 import kotlinx.serialization.json.Json
