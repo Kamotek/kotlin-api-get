@@ -1,6 +1,6 @@
-package io
+package filesio
 
-import com.io.PostSerializer
+import com.filesio.PostSerializer
 import com.model.Post
 import org.junit.jupiter.api.Test
 import kotlinx.serialization.json.*

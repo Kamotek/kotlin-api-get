@@ -1,6 +1,6 @@
-package io
+package filesio
 
-import com.io.PostSaver
+import com.filesio.PostSaver
 import com.model.Post
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

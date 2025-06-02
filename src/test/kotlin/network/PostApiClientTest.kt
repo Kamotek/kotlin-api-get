@@ -10,6 +10,8 @@ class PostApiClientTest {
 
  @Test
  fun `getPosts returns valid list from proper source`() = runBlocking {
+
+
   val validUrl = "https://jsonplaceholder.typicode.com/posts"
 
   val posts: List<Post> = PostApiClient.getPosts(validUrl)
@@ -29,7 +31,8 @@ class PostApiClientTest {
   val invalidUrl = "https://jsonplaceholder.typicode.com/invalid-endpoint"
 
   val posts: List<Post> = PostApiClient.getPosts(invalidUrl)
+   assertTrue(posts.isEmpty(), "Empty list expected")
+  }
 
-  assertTrue(posts.isEmpty(), "Empty list expected")
- }
+
 }
